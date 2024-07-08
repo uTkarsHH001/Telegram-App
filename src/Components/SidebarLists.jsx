@@ -18,7 +18,7 @@ export default function SidebarLists(){
             <div className={`${theme === `dark` ? `bg-dark-secondary` : `bg-light-secondary`} text-dark-text w-3/4 h-full absolute`}>
                 <div className={`${theme === `dark` ? `bg-dark-primary` : `bg-light-primary`} p-4`}>
                     <div className="flex justify-between">
-                        <img src="/public/telegram.png" className="w-16" alt="" />
+                        <img src="/telegram.png" className="w-16" alt="" />
                         <Button onClick={toggleTheme} Icon={theme == 'dark' ? IoSunnyOutline : FaMoon} />
                     </div>
                     <div className="mt-5 flex justify-between">
