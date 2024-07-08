@@ -15,7 +15,7 @@ export default function UserChatTopBar({name}){
     return(
 
         <>
-            <div className={`w-full bg-${theme}-primary text-2xl flex items-center gap-2 p-4 fixed top-0`}>
+            <div className={`w-full bg-${theme}-primary text-dark-text text-2xl flex items-center gap-2 p-4 fixed top-0`}>
                 <Button onClick={toggleChat} Icon={FaArrowLeft}/>
                 <Avatar size="50" className="rounded-full mr-1" name={name} />
                 <p className="flex-grow">{name}</p>

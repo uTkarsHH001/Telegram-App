@@ -47,10 +47,9 @@ export default function ChatsList(){
         <>
             
             <UserChat user={user}/>
-            {/* : */}
-            <div  className="h-full w-full overflow-scroll pt-22">
+            <div  className="h-full w-full overflow-scroll pt-20">
                 {chats.map(chat => (
-                    <Chat onClick={() => setUser({ Id: chat.created_by, name:  chat.creator.name || chat.creator.email || 'Anonymous'})} 
+                    <Chat onClick={() => setUser({ Id: chat.id, name:  chat.creator.name || chat.creator.email || 'Anonymous'})} 
                           key={uuidv4()} 
                           id={chat.created_by} 
                           name={chat.creator.name || chat.creator.email || 'Anonymous'}/>

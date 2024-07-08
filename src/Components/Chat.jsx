@@ -11,10 +11,10 @@ export default function Chat({id, name, onClick}){
     
     return(
         <>
-            <div onClick={ () => {toggleChat(); onClick();}} className={`flex gap-4 p-2 text-${theme}-text active:bg-slate-500`}> 
+            <div onClick={ () => {toggleChat(); onClick();}} className={`flex p-2 text-${theme}-text active:bg-slate-500`}> 
                 {/* <img src="/public/telegram.png"  /> */}
                 <Avatar name={name} size="65" className="p-1 rounded-full" alt=""/>
-                <div className="flex-grow p-1 border-b-2 border-black">
+                <div className="flex-grow ml-2 p-1 border-b-2 border-black">
                     <h1>{name}</h1>
                     <p className="text-2xl text-slate-400">fjaskdf asfasd f s</p>
                 </div>
