@@ -5,7 +5,7 @@ import { IoCall } from "react-icons/io5";
 import { CiMenuKebab } from "react-icons/ci";
 import Avatar from "react-avatar";
 import { IsChatOpenContext, ThemeContext } from "../context";
-
+import PropTypes from "prop-types";
 
 export default function UserChatTopBar({name}){
     
@@ -15,8 +15,8 @@ export default function UserChatTopBar({name}){
     return(
 
         <>
-            <div className={`w-full bg-${theme}-primary text-dark-text text-2xl flex items-center gap-2 p-4 fixed top-0`}>
-                <Button onClick={toggleChat} Icon={FaArrowLeft}/>
+            <div className={`w-full bg-${theme}-primary text-dark-text text-2xl flex items-center gap-2 p-2 fixed top-0`}>
+                <div className="md:hidden"><Button onClick={toggleChat} Icon={FaArrowLeft}/></div>
                 <Avatar size="50" className="rounded-full mr-1" name={name} />
                 <p className="flex-grow">{name}</p>
                 <div>
@@ -27,3 +27,8 @@ export default function UserChatTopBar({name}){
         </>
     )
 }
+
+
+UserChatTopBar.propTypes = {
+    name: PropTypes.string.isRequired
+};

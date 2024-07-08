@@ -1,5 +1,6 @@
+import PropTypes from "prop-types";
 
-export default function MenuItme({Icon, name}){
+export default function MenuItem({Icon, name}){
 
     return (
         <>
@@ -10,3 +11,8 @@ export default function MenuItme({Icon, name}){
         </>
     )
 }
+
+MenuItem.propTypes = {
+    Icon: PropTypes.elementType.isRequired,
+    name: PropTypes.string.isRequired
+};

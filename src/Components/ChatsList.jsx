@@ -4,6 +4,9 @@ import axios from "axios";
 import { v4 as uuidv4 } from 'uuid';
 import { IsChatOpenContext } from "../context";
 import UserChat from "./UserChat";
+import { ThemeContext } from "../context";
+import { MdOutlineEdit } from "react-icons/md";
+
 
 export default function ChatsList(){
 
@@ -13,7 +16,8 @@ export default function ChatsList(){
     const [error, setError] = useState(null);
     const [user, setUser] = useState({});
     const { isChatOpen } = useContext(IsChatOpenContext)
-    
+    const { theme } = useContext(ThemeContext)
+
     useEffect(() => {
         fetchChats("https://devapi.beyondchats.com/api/get_all_chats")
     }, [])
@@ -46,16 +50,20 @@ export default function ChatsList(){
     return(
         <>
             
-            <UserChat user={user}/>
-            <div  className="h-full w-full overflow-scroll pt-20">
-                {chats.map(chat => (
-                    <Chat onClick={() => setUser({ Id: chat.id, name:  chat.creator.name || chat.creator.email || 'Anonymous'})} 
-                          key={uuidv4()} 
-                          id={chat.created_by} 
-                          name={chat.creator.name || chat.creator.email || 'Anonymous'}/>
-                ))}
+            <div>
+                <UserChat user={user}/>
+                <div  className={`h-full w-full ${theme === `dark` ? `bg-dark-secondary` : `bg-light-secondary`} overflow-scroll pt-20`}>
+                    {chats.map(chat => (
+                        <Chat onClick={() => setUser({ Id: chat.id, name:  chat.creator.name || chat.creator.email || 'Anonymous'})} 
+                            key={uuidv4()} 
+                            id={chat.created_by} 
+                            name={chat.creator.name || chat.creator.email || 'Anonymous'}/>
+                    ))}
+                </div>
+                {!isChatOpen && 
+                    <button className={`bg-light-primary fixed bottom-5 left-[80vw] md:left-[38vw] text-5xl p-4 rounded-full`}><MdOutlineEdit /></button>
+                }
             </div>
-            {/* } */}
         </>
     )
 }

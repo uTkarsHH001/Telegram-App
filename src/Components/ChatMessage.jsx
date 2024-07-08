@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 
 export default function ChatMessage ({ userId, senderId, msg, timeAt }){
     const isReceived = senderId === userId; // Assuming sender_id 1 is the other user
@@ -14,3 +15,10 @@ export default function ChatMessage ({ userId, senderId, msg, timeAt }){
         </div>
     )
 }
+
+ChatMessage.propTypes = {
+    userId: PropTypes.number.isRequired,
+    senderId: PropTypes.number.isRequired,
+    msg: PropTypes.string.isRequired,
+    timeAt: PropTypes.string.isRequired
+};

@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { IsChatOpenContext } from "../context";
 import UserChatMessages from "./UserChatMessages";
+import PropTypes from "prop-types";
 
 export default function UserChat({user}){
 
@@ -26,7 +27,7 @@ export default function UserChat({user}){
 
     return(
         <>
-            <div className={`h-full w-full absolute ${!isChatOpen ? `right-[100vw]` : `right-0`}`} style={{backgroundImage: 'url("/bg.jpg")', backgroundSize: 'cover'}}>
+            <div className={`h-full w-full md:w-9/12  absolute md:right-0 ${!isChatOpen ? `right-[100vw]` : `right-0`}`} style={{backgroundImage: 'url("/bg.jpg")', backgroundSize: 'cover'}}>
                 <UserChatTopBar name={user.name}/>
                 <UserChatMessages userId={user.Id} messages={messages}/>
                 <UserChatTextBar />
@@ -34,3 +35,10 @@ export default function UserChat({user}){
         </>
     )
 }
+
+UserChat.propTypes = {
+    user: PropTypes.shape({
+        Id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired
+    }).isRequired
+};

@@ -1,4 +1,5 @@
 import { createContext, useState } from 'react';
+import PropTypes from 'prop-types';
 
 const ThemeContext = createContext();
 export const ThemeProvider = ThemeContext.Provider;
@@ -38,3 +39,7 @@ export const AppProvider = ({ children }) => {
 };
 
 export { ThemeContext, IsChatOpenContext, SidebarContext };
+
+AppProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
