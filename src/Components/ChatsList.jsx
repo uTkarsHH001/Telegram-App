@@ -23,6 +23,7 @@ export default function ChatsList(){
         try {
           const response = await axios.get(url);
           setChats(response.data.data.data)
+          
         //   setChats((prevChats) => [...prevChats, ...response.data.data.data]);
         //   setNextPageUrl(response.data.data.next_page_url);
         } catch (err) {
@@ -44,19 +45,18 @@ export default function ChatsList(){
 
     return(
         <>
-            {isChatOpen ? 
             
             <UserChat user={user}/>
-            :
-            <div  className="h-full  w-full overflow-scroll pt-22">
+            {/* : */}
+            <div  className="h-full w-full overflow-scroll pt-22">
                 {chats.map(chat => (
-                    <Chat onClick={() => setUser({ Id: chat.id, name:  chat.creator.name || chat.creator.email || 'Anonymous'})} 
+                    <Chat onClick={() => setUser({ Id: chat.created_by, name:  chat.creator.name || chat.creator.email || 'Anonymous'})} 
                           key={uuidv4()} 
-                          id={chat.id} 
+                          id={chat.created_by} 
                           name={chat.creator.name || chat.creator.email || 'Anonymous'}/>
                 ))}
             </div>
-            }
+            {/* } */}
         </>
     )
 }

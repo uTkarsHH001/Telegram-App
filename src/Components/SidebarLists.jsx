@@ -15,8 +15,8 @@ export default function SidebarLists(){
 
     return(
         <>
-            <div className={`bg-${theme}-secondary w-3/4 h-full absolute`}>
-                <div className={`bg-${theme}-primary p-4`}>
+            <div className={`${theme === `dark` ? `bg-dark-secondary` : `bg-light-secondary`} text-dark-text w-3/4 h-full absolute`}>
+                <div className={`${theme === `dark` ? `bg-dark-primary` : `bg-light-primary`} p-4`}>
                     <div className="flex justify-between">
                         <img src="/public/telegram.png" className="w-16" alt="" />
                         <Button onClick={toggleTheme} Icon={theme == 'dark' ? IoSunnyOutline : FaMoon} />
@@ -31,7 +31,7 @@ export default function SidebarLists(){
                         </div>
                     </div>
                 </div>
-                <div className={`p-2 bg-${theme}-secondary text-${theme}-text`}>
+                <div className={`p-2 ${theme === `dark` ? `bg-dark-secondary` : `bg-light-secondary`} ${theme === `dark` ? `text-dark-text` : `text-light-text`}`}>
                     {isArrowClick &&
                         <>
                             <div className="text-2xl flex gap-5 transition-all duration-300">
@@ -42,13 +42,13 @@ export default function SidebarLists(){
                         </>
                     }
                     
-                    <div className={`border border-${theme}-primary border-y-2`}><MenuItem Icon={CgProfile} name={"My Profile"}/></div>
+                    <div className={`border ${theme === `dark` ? `border-dark-secondary` : `border-light-secondary`} border-y-2`}><MenuItem Icon={CgProfile} name={"My Profile"}/></div>
                         <MenuItem Icon={MdGroups2} name={"New Group"} />
                         <MenuItem Icon={IoMdContact} name={"Contacts"} />
                         <MenuItem Icon={IoCallSharp} name={"Calls"} />
                         <MenuItem Icon={RiUserLocationLine} name={"People Nearby"} />
                         <MenuItem Icon={FaBookmark} name={"Saved Messages"} />
-                        <div className={`border border-${theme}-primary border-b-2`}><MenuItem Icon={IoIosSettings} name={"Settings"} /></div>
+                        <div className={`border ${theme === `dark` ? `border-dark-secondary` : `border-light-secondary`} border-b-2`}><MenuItem Icon={IoIosSettings} name={"Settings"} /></div>
                         <MenuItem Icon={IoMdPersonAdd} name={"Invite Friends"} />
                         <MenuItem Icon={IoIosHelpCircleOutline} name={"Telegram Features"} />
                     </div>

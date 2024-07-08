@@ -13,7 +13,7 @@ export default function App(){
 
   return(
     <>
-      <div className={`h-screen w-screen bg-${theme}-secondary text-3xl text-dark-text `}>
+      <div className={`h-screen w-screen ${theme === `dark` ? `bg-dark-secondary` : `bg-light-secondary`} text-3xl`}>
         <Topbar />
         <ChatsList />
         

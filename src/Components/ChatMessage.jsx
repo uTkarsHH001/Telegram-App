@@ -1,17 +1,16 @@
 
-export default function ChatMessage ({ message }){
-    // const isReceived = message.sender_id === 1; // Assuming sender_id 1 is the other user
-
+export default function ChatMessage ({ userId, senderId, msg, timeAt }){
+    const isReceived = senderId === userId; // Assuming sender_id 1 is the other user
+    console.log(senderId + " " + userId);
     return (
-        // <div className={`chat-message ${isReceived ? 'received' : 'sent'}`}>
-        //     <div className="message-content">
-        //         <div className="message-text">{message.message}</div>
-        //         <div className="message-meta">
-        //             <span className="message-sender">{message.sender.name}</span>
-        //             <span className="message-time">{new Date(message.created_at).toLocaleTimeString()}</span>
-        //         </div>
-        //     </div>
-        // </div>
-        <h2>Hit tere</h2>
+        <div className={`text-dark-text my-8 text-2xl ${isReceived ? 'bg-red-100' : 'bg-slate-100'}`}>
+            <div className="message-content">
+                {/* <span className="bg-red-100">{isReceived}</span> */}
+                <div className="message-text">{msg}</div>
+                <div className="message-meta">
+                    <span className="message-time">{new Date(timeAt).toLocaleTimeString()}</span>
+                </div>
+            </div>
+        </div>
     )
 }
