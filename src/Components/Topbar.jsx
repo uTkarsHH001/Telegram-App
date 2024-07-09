@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoSearch } from "react-icons/io5";
+import { SidebarContext, ThemeContext } from "../context";
 import Sidebar from "./Sidebar";
 import Button from "./Button";
-import { SidebarContext, ThemeContext } from "../context";
 
 export default function Topbar(){
 

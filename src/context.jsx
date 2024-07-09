@@ -23,14 +23,18 @@ export const AppProvider = ({ children }) => {
   };
 
   const [isChatOpen, setIsChatOpen] = useState(false);
-  const toggleChat = () => {
-    setIsChatOpen(prevIsOpen => !prevIsOpen);
+  const showChat = () => {
+    setIsChatOpen(true);
+  };
+
+  const closeChat = () => {
+    setIsChatOpen(false);
   };
 
   return (
     <ThemeProvider value={{ theme, toggleTheme }}>
       <SidebarProvider value={{isSidebarOpen, toggleSidebar}}>
-        <IsChatOpenProvider value={{ isChatOpen, toggleChat }}>
+        <IsChatOpenProvider value={{ isChatOpen, showChat, closeChat }}>
           {children}
         </IsChatOpenProvider>
       </SidebarProvider>

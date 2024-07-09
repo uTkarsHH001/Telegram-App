@@ -14,7 +14,7 @@ export default function ChatsList(){
     // const [nextPageUrl, setNextPageUrl] = useState("https://devapi.beyondchats.com/api/get_all_chats")
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [user, setUser] = useState({});
+    const [toUser, setToUser] = useState({});
     const { isChatOpen } = useContext(IsChatOpenContext)
     const { theme } = useContext(ThemeContext)
 
@@ -36,11 +36,11 @@ export default function ChatsList(){
         }
         setLoading(false);
       };
-
+      console.log("chatlist--", toUser)
     if(loading){
         return(
             <>  
-                <div>
+                <div className="flex jusity-center items-center">
                     <p>Loading....</p>
                 </div>
             </>
@@ -51,20 +51,21 @@ export default function ChatsList(){
         <>
             
             <div className="h-full w-full">
-                <UserChat user={user}/>
+               {isChatOpen ?  
+                    <UserChat toUser={toUser.chat}/>
+                    :
+                    <div className="hidden md:block h-full w-full md:w-9/12 absolute right-0" style={{backgroundImage: `url("/${theme}.jpg")`, backgroundSize: 'cover'}}></div>
+                }
+                
                 <div  className={`h-full w-full ${theme === `dark` ? `bg-dark-secondary` : `bg-light-secondary`} overflow-scroll pt-16`}>
                     {chats.map(chat => (
-                        <Chat onClick={() => setUser({ Id: chat.id, name:  chat.creator.name || chat.creator.email || 'Anonymous'})} 
+                        <Chat onClick={() => setToUser({chat})} 
                             key={uuidv4()} 
-                            id={chat.created_by} 
-                            name={chat.creator.name || chat.creator.email || 'Anonymous'}/>
+                            chat={chat}
+                        />
                     ))}
-                    {/* {!isChatOpen && 
-                        <div className="fixed left-1/4">
-                            <button className={`bg-light-primary text-5xl p-4 rounded-full`}><MdOutlineEdit /></button>
-                        </div>
-                    } */}
                 </div>
+
                 {!isChatOpen && 
                     <button className={`md:hidden bg-light-primary fixed bottom-5 left-[75vw] md:left-[18vw] text-5xl p-4 rounded-full`}><MdOutlineEdit /></button>
                 }

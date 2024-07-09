@@ -15,16 +15,16 @@ export default function SidebarLists(){
 
     return(
         <>
-            <div className={`${theme === `dark` ? `bg-dark-secondary` : `bg-light-secondary`} text-dark-text w-3/4 h-full absolute`}>
+            <div className={`${theme === `dark` ? `bg-dark-secondary` : `bg-light-secondary`} text-dark-text w-3/4 h-full absolute md:text-sm md:w-2/12 md:h-2/4`}>
                 <div className={`${theme === `dark` ? `bg-dark-primary` : `bg-light-primary`} p-4`}>
-                    <div className="flex justify-between">
-                        <img src="/telegram.png" className="w-16" alt="" />
+                    <div className="flex justify-between ">
+                        <img src="/telegram.png" className="w-16 md:w-8 md:h-8" alt="" />
                         <Button onClick={toggleTheme} Icon={theme == 'dark' ? IoSunnyOutline : FaMoon} />
                     </div>
-                    <div className="mt-5 flex justify-between">
+                    <div className="mt-5 md:mt-0 flex justify-between">
                         <div>
-                            <p className="text-lg">Utkarsh</p>
-                            <p className="text-lg text-slate-200">+91 63975532165</p>
+                            <p className="text-lg md:text-sm">Utkarsh</p>
+                            <p className="text-lg md:text-sm text-slate-200">+91 63975532165</p>
                         </div>
                         <div className={`${isArrowClick ? `rotate-180` : ``} transition-all duration-400`}>
                             <Button onClick={() => setIsArrowClick(!isArrowClick)} Icon={IoIosArrowDown}/>
@@ -34,8 +34,8 @@ export default function SidebarLists(){
                 <div className={`p-2 ${theme === `dark` ? `bg-dark-secondary` : `bg-light-secondary`} ${theme === `dark` ? `text-dark-text` : `text-light-text`}`}>
                     {isArrowClick &&
                         <>
-                            <div className="text-2xl flex gap-5 transition-all duration-300">
-                                <img src="/telegram.png" className="w-10 p-1" alt="" />
+                            <div className="text-2xl md:text-sm flex gap-5 transition-all duration-300">
+                                <img src="/telegram.png" className="w-10 md:w-6 p-1" alt="" />
                                 <p>Utkarsh</p>
                             </div>
                             <MenuItem Icon={FaPlus} name={"Add Account"} />

@@ -5,17 +5,18 @@ import { IsChatOpenContext } from "../context";
 import Avatar from "react-avatar";
 import PropTypes from "prop-types";
 
-export default function Chat({id, name, onClick}){
+export default function Chat({chat, onClick}){
     
     const { theme } = useContext(ThemeContext)
-    const { toggleChat } = useContext(IsChatOpenContext)
+    const { showChat } = useContext(IsChatOpenContext)
+    // console.log(chat);
     
     return(
         <>
-            <div onClick={ () => {toggleChat(); onClick();}} className={`flex p-2 text-${theme}-text active:bg-slate-500`}> 
-               <Avatar name={name} size="60" className="rounded-full" alt=""/>
+            <div onClick={ () => {showChat(); onClick();}} className={`flex p-2 text-${theme}-text active:bg-slate-500`}> 
+               <Avatar name={chat.creator.name || 'Anonymous'} size="60" className="rounded-full" alt=""/>
                 <div className="flex-grow ml-2 p-1 border-b-2 border-black">
-                    <h1>{name}</h1>
+                    <h1>{chat.creator.name || 'Anonymous'}</h1>
                     <p className="text-2xl md:text-sm text-slate-400">Messages</p>
                 </div>
                 <div className="text-lg md:text-sm border-b-2 pr-2 border-black">
@@ -28,7 +29,10 @@ export default function Chat({id, name, onClick}){
 }
 
 Chat.propTypes = {
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired
+    chat: PropTypes.shape({
+        creator: PropTypes.shape({
+            name: PropTypes.string,
+        }).isRequired,
+    }).isRequired,
+    onClick: PropTypes.func.isRequired,
 };

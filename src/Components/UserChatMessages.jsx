@@ -1,22 +1,15 @@
 import PropTypes from "prop-types";
+import Message from "./Message";
 
-export default function UserChatMessages({userId, messages}){
-
+export default function UserChatMessages({toUserId, messages}){
+    
+    
     return(
         <>
             <div className="h-full w-full flex items-center">
-                <div className="h-full p-4 w-full overflow-scroll">
+                <div className="h-full p-4 w-full overflow-scroll flex flex-col-reverse">
                     {messages.map(m => (
-                        <div key={userId} 
-                             className={`w-full text-dark-text my-8 text-2xl md:text-lg`}
-                            >
-                            <div className="message-content">
-                                <div className="message-text">{m.message}</div>
-                                <div className="message-meta">
-                                    <span className="message-time">{new Date(m.created_at).toLocaleTimeString()}</span>
-                                </div>
-                            </div>
-                        </div>
+                        <Message key={m.id} toUserId={toUserId} m={m}/>
                     ))}
                 </div>
             </div>
@@ -25,7 +18,7 @@ export default function UserChatMessages({userId, messages}){
 }
 
 UserChatMessages.propTypes = {
-    userId: PropTypes.number.isRequired,
+    toUserId: PropTypes.number.isRequired,
     messages: PropTypes.arrayOf(PropTypes.shape({
         chat_id: PropTypes.number.isRequired,
         message: PropTypes.string.isRequired,
