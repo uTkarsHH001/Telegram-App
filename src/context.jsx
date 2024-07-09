@@ -10,6 +10,9 @@ export const SidebarProvider = SidebarContext.Provider;
 const IsChatOpenContext = createContext();
 export const IsChatOpenProvider = IsChatOpenContext.Provider;
 
+const IsMenuOptionClickedContext = createContext();
+export const IsMenuOptionClickedProvider = IsMenuOptionClickedContext.Provider;
+
 export const AppProvider = ({ children }) => {
   
   const [theme, setTheme] = useState('dark'); 
@@ -31,18 +34,29 @@ export const AppProvider = ({ children }) => {
     setIsChatOpen(false);
   };
 
+  const [isMenuOptionClicked, setIsMenuOptionClicked] = useState(false);
+  const showClikedMenuOption = () => {
+    setIsMenuOptionClicked(true);
+  };
+
+  const closeClikedMenuOption = () => {
+    setIsMenuOptionClicked(false);
+  };
+
   return (
     <ThemeProvider value={{ theme, toggleTheme }}>
       <SidebarProvider value={{isSidebarOpen, toggleSidebar}}>
         <IsChatOpenProvider value={{ isChatOpen, showChat, closeChat }}>
-          {children}
+          <IsMenuOptionClickedProvider value={{ isMenuOptionClicked, showClikedMenuOption, closeClikedMenuOption }}>
+            {children}
+          </IsMenuOptionClickedProvider>
         </IsChatOpenProvider>
       </SidebarProvider>
     </ThemeProvider>
   );
 };
 
-export { ThemeContext, IsChatOpenContext, SidebarContext };
+export { ThemeContext, IsChatOpenContext, SidebarContext, IsMenuOptionClickedContext};
 
 AppProvider.propTypes = {
   children: PropTypes.node.isRequired,
