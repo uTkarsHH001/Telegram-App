@@ -1,4 +1,3 @@
-import ChatMessage from "./ChatMessage";
 import PropTypes from "prop-types";
 
 export default function UserChatMessages({userId, messages}){
@@ -6,9 +5,18 @@ export default function UserChatMessages({userId, messages}){
     return(
         <>
             <div className="h-full w-full flex items-center">
-                <div className="h-full p-4 mb-6 w-full overflow-scroll">
+                <div className="h-full p-4 w-full overflow-scroll">
                     {messages.map(m => (
-                        <ChatMessage key={m.chat_id} userId={userId} senderId={m.chat_id} msg={m.message} timeAt={m.created_at}/>
+                        <div key={userId} 
+                             className={`text-dark-text my-8 text-2xl`}
+                            >
+                            <div className="message-content">
+                                <div className="message-text">{m.message}</div>
+                                <div className="message-meta">
+                                    {/* <span className="message-time">{new Date(m.created_at).toLocaleTimeString()}</span> */}
+                                </div>
+                            </div>
+                        </div>
                     ))}
                 </div>
             </div>

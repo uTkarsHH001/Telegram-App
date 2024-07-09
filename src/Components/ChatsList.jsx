@@ -50,7 +50,7 @@ export default function ChatsList(){
     return(
         <>
             
-            <div>
+            <div className="h-full w-full">
                 <UserChat user={user}/>
                 <div  className={`h-full w-full ${theme === `dark` ? `bg-dark-secondary` : `bg-light-secondary`} overflow-scroll pt-20`}>
                     {chats.map(chat => (

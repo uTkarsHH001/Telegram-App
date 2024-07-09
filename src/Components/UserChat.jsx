@@ -27,7 +27,7 @@ export default function UserChat({user}){
 
     return(
         <>
-            <div className={`h-full w-full md:w-9/12  absolute md:right-0 ${!isChatOpen ? `right-[100vw]` : `right-0`}`} style={{backgroundImage: 'url("/bg.jpg")', backgroundSize: 'cover'}}>
+            <div className={`h-full w-full md:w-9/12 pb-6 absolute md:right-0 ${!isChatOpen ? `right-[100vw]` : `right-0`}`} style={{backgroundImage: 'url("/bg.jpg")', backgroundSize: 'cover'}}>
                 <UserChatTopBar name={user.name}/>
                 <UserChatMessages userId={user.Id} messages={messages}/>
                 <UserChatTextBar />
