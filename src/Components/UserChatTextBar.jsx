@@ -14,7 +14,7 @@ export default function UserChatTextBar(){
             <div className={`w-full bg-${theme}-secondary text-${theme}-text fixed bottom-0`}>
                 <div className="flex">
                     <Button Icon={FaRegSmile}/>
-                    <input className=" w-3/4 p-2 bg-transparent" placeholder="Message" type="text" />
+                    <input className=" w-3/4 p-2 outline-none bg-transparent" placeholder="Message" type="text" />
                     <Button Icon={GrAttachment} />
                     <Button Icon={FaMicrophone} />
                 </div>
