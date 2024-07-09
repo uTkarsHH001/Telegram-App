@@ -11,7 +11,7 @@ export default function App(){
 
   return(
     <>
-      <div className={`h-screen w-screen md:w-3/12 ${theme === `dark` ? `bg-dark-secondary` : `bg-light-secondary`} text-3xl`}>
+      <div className={`h-screen w-screen md:w-3/12 ${theme === `dark` ? `bg-dark-secondary` : `bg-light-secondary`} text-2xl md:text-xl`}>
         <Topbar />
         <ChatsList />
   

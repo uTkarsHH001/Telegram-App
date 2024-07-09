@@ -52,16 +52,21 @@ export default function ChatsList(){
             
             <div className="h-full w-full">
                 <UserChat user={user}/>
-                <div  className={`h-full w-full ${theme === `dark` ? `bg-dark-secondary` : `bg-light-secondary`} overflow-scroll pt-20`}>
+                <div  className={`h-full w-full ${theme === `dark` ? `bg-dark-secondary` : `bg-light-secondary`} overflow-scroll pt-16`}>
                     {chats.map(chat => (
                         <Chat onClick={() => setUser({ Id: chat.id, name:  chat.creator.name || chat.creator.email || 'Anonymous'})} 
                             key={uuidv4()} 
                             id={chat.created_by} 
                             name={chat.creator.name || chat.creator.email || 'Anonymous'}/>
                     ))}
+                    {/* {!isChatOpen && 
+                        <div className="fixed left-1/4">
+                            <button className={`bg-light-primary text-5xl p-4 rounded-full`}><MdOutlineEdit /></button>
+                        </div>
+                    } */}
                 </div>
                 {!isChatOpen && 
-                    <button className={`bg-light-primary fixed bottom-5 left-[80vw] md:left-[38vw] text-5xl p-4 rounded-full`}><MdOutlineEdit /></button>
+                    <button className={`md:hidden bg-light-primary fixed bottom-5 left-[75vw] md:left-[18vw] text-5xl p-4 rounded-full`}><MdOutlineEdit /></button>
                 }
             </div>
         </>

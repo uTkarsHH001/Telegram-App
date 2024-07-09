@@ -8,12 +8,12 @@ export default function UserChatMessages({userId, messages}){
                 <div className="h-full p-4 w-full overflow-scroll">
                     {messages.map(m => (
                         <div key={userId} 
-                             className={`text-dark-text my-8 text-2xl`}
+                             className={`w-full text-dark-text my-8 text-2xl md:text-lg`}
                             >
                             <div className="message-content">
                                 <div className="message-text">{m.message}</div>
                                 <div className="message-meta">
-                                    {/* <span className="message-time">{new Date(m.created_at).toLocaleTimeString()}</span> */}
+                                    <span className="message-time">{new Date(m.created_at).toLocaleTimeString()}</span>
                                 </div>
                             </div>
                         </div>

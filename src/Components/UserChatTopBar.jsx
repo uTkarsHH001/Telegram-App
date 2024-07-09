@@ -15,9 +15,9 @@ export default function UserChatTopBar({name}){
     return(
 
         <>
-            <div className={`w-full bg-${theme}-primary text-dark-text text-2xl flex items-center gap-2 p-2 fixed top-0`}>
+            <div className={`w-full bg-${theme}-primary text-dark-text text-2xl md:text-xl flex items-center gap-2 p-2 md:p-0 fixed top-0`}>
                 <div className="md:hidden"><Button onClick={toggleChat} Icon={FaArrowLeft}/></div>
-                <Avatar size="50" className="rounded-full mr-1" name={name} />
+                <Avatar size="40" className="rounded-full mr-1" name={name} />
                 <p className="flex-grow">{name}</p>
                 <div>
                     <Button Icon={IoCall} onClick={() => console.log('clicked')}></Button>
